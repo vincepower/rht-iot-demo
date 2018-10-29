@@ -8,16 +8,21 @@
     <artifactId>camel-route</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <parent>
+        <groupId>com.redhat</groupId>
+        <artifactId>iot</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath/>
+    </parent>
     <modules>
         <module>../aggregatedemo</module>
     </modules>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-
         <maven-bundle-plugin.version>3.0.1</maven-bundle-plugin.version>
         <slf4j.version>1.6.6</slf4j.version>
-        <camel.version>2.17.2</camel.version>
+        <camel.version>2.17.7</camel.version>
         <pmml.version>1.3.7</pmml.version>
         <spring.version>4.3.10.RELEASE</spring.version>
         <org.slf4j.version>1.7.21</org.slf4j.version>

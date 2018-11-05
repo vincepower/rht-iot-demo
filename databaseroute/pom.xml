@@ -17,6 +17,7 @@
     -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+         <start-class>com.redhat.iot.demo.database.route.Application</start-class>
 
         <!-- configure the versions you want to use here -->
         <fabric8.version>3.0.12</fabric8.version>
@@ -125,6 +126,9 @@
                         <goals>
                             <goal>repackage</goal>
                         </goals>
+                        <configuration>
+                            <mainClass>${start-class}</mainClass>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>

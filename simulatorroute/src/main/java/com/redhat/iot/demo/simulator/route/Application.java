@@ -12,6 +12,10 @@ public class Application extends RouteBuilder {
     ProtobufDataFormat format = new ProtobufDataFormat(KuraPayloadProto.KuraPayload.getDefaultInstance());
     KuraProcess process = new KuraProcess();
 
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+
     @Override
     public void configure() throws Exception {
 
@@ -19,7 +23,7 @@ public class Application extends RouteBuilder {
                 .unmarshal().gzip()
                 .unmarshal(format)
                 .process(process)
-                .setHeader("CamelMQTTPublishTopic", simple("/iot-demo/data"))
+                .setHeader("CamelMQTTPublishTopic", simple("iot-demo/data"))
                 .to("mqtt:iot-demo?host=tcp://ec-broker-mqtt.iot-demo-371b.apps.rhpds310.openshift.opentlc.com:31884&userName=ec-sys&password=ec-password&version=3.1.1&qualityOfService=AtMostOnce");
 
     }

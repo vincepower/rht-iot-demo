@@ -27,13 +27,13 @@ public class Application extends RouteBuilder {
         reg.put("dataSource", dataSource);
 
 
-        from("mqtt:incoming?host=tcp://ec-broker-mqtt.redhat-iot.svc:1883&subscribeTopicName=Red-Hat/+/cloudera-demo/facilities/+/lines/+/machines/+&userName=demogw&password=RedHat123!@#")
+        from("mqtt:incoming?host=tcp://ec-broker-mqtt.iot-demo-371b.apps.rhpds310.openshift.opentlc.com:31884&subscribeTopicName=+/+/cloudera-demo/facilities/+/lines/+/machines/machine-1&userName=ec-sys&password=ec-password")
         .to("direct:db", "direct:fwd");
 
 
         from("direct:fwd")
             .setHeader("CamelMQTTPublishTopic", simple("Red-Hat/cldr-demo-gw/iot-demo/data"))
-            .to("mqtt:iot-demo?host=tcp://ec-broker-mqtt.redhat-iot.svc:1883&userName=demo-gw2&password=RedHat123!@#&version=3.1.1&qualityOfService=AtMostOnce");
+            .to("mqtt:iot-demo?host=tcp://ec-broker-mqtt.iot-demo-371b.apps.rhpds310.openshift.opentlc.com:31884&userName=ec-sys&password=ec-password&version=3.1.1&qualityOfService=AtMostOnce");
 
         from("direct:db")
                 .process(new DBProcessor())

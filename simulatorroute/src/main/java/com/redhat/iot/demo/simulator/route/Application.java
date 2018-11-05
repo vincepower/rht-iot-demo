@@ -15,12 +15,12 @@ public class Application extends RouteBuilder {
     @Override
     public void configure() throws Exception {
 
-        from("mqtt:incoming?host=tcp://ec-broker-mqtt.redhat-iot.svc:1883&subscribeTopicName=Red-Hat/+/cloudera-demo/facilities/+/lines/+/machines/+&userName=demogw&password=RedHat123!@#")
+        from("mqtt:incoming?host=tcp://ec-broker-mqtt.iot-demo-371b.apps.rhpds310.openshift.opentlc.com:31884&subscribeTopicName=+/+/cloudera-demo/facilities/+/lines/+/machines/machine-1&userName=ec-sys&password=ec-password")
                 .unmarshal().gzip()
                 .unmarshal(format)
                 .process(process)
                 .setHeader("CamelMQTTPublishTopic", simple("/iot-demo/data"))
-                .to("mqtt:iot-demo?host=tcp://ec-broker-mqtt.redhat-iot.svc:1883&userName=demo-gw2&password=RedHat123!@#&version=3.1.1&qualityOfService=AtMostOnce");
+                .to("mqtt:iot-demo?host=tcp://ec-broker-mqtt.iot-demo-371b.apps.rhpds310.openshift.opentlc.com:31884&userName=ec-sys&password=ec-password&version=3.1.1&qualityOfService=AtMostOnce");
 
     }
 }

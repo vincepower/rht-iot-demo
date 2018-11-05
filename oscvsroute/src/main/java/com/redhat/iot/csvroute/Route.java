@@ -144,7 +144,7 @@ public class Route implements ConfigurableComponent {
                                         "current", "temp", "noise", "vibration"}))
                         .process(kuraProcessor)
                        // .toD("cloud:" + asString(properties, "topic.prefix") + "/${file:name.noext}");
-                        .to("mqtt:okalert?host=tcp://ec-broker-mqtt.redhat-iot.svc:1883&userName=demo-gw2&password=RedHat123!@#&version=3.1.1&qualityOfService=AtMostOnce");
+                        .to("mqtt:iot-demo?host=tcp://ec-broker-mqtt.iot-demo-371b.apps.rhpds310.openshift.opentlc.com:31884&userName=ec-sys&password=ec-password&version=3.1.1&qualityOfService=AtMostOnce");
 //                .to("log:Control?showAll=true&multiline=true");
             }
         };

@@ -1,0 +1,36 @@
+<div class="panel-body">
+    <div class="content panel-block">
+        <div layout="column">
+            <div laout="row">
+                <table>
+                    <tr>
+                        <td style="width:100px;">Sensor</td>
+                        <td style="width:75px;">Data</td>
+                        <td style="width:100px;">History</td>
+                    </tr>
+                    <tr ng-repeat="sensor in sensors">
+                        <td>{{sensor.name}}</td>
+                        <td>{{sensor.data}}</td>
+                        <td><md-button class="md-raised md-primary" style="margin:6px 0px;" ng-click="showHistory(sensor.name)">
+                            <span>Display</span>
+                        </md-button></td>
+                        <td ></td>
+                    </tr>
+                </table>
+            </div>
+            <div layout="row">
+                <div ng-if="data">
+                    <div>
+                        <h3>History</h3>
+                    </div>
+                    <div ng-if="data" style="width:750px">
+                        <canvas id="line" class="chart chart-line" chart-data="data"
+                                chart-labels="labels" chart-series="series" chart-options="options"
+                                chart-dataset-override="datasetOverride" chart-click="onClick">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

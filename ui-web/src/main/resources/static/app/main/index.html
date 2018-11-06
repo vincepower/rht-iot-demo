@@ -21,7 +21,7 @@
             <div layout="row">
                 <div ng-if="data">
                     <div>
-                        <h3>History</h3>
+                        <h3>History - {{machine.name}} - {{machine.device}} - {{machine.sensor}}</h3>
                     </div>
                     <div ng-if="data" style="width:750px">
                         <canvas id="line" class="chart chart-line" chart-data="data"

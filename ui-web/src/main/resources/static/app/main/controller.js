@@ -1,8 +1,8 @@
 angular.module('iot').controller('MainController', function($scope, $rootScope, $http, $timeout, SensorData) {
     $scope.sensors = [];
-   // $scope.data = {};
+    // $scope.data = {};
 
-     SensorData.connectClient(function (data) {
+    SensorData.connectClient(function (data) {
         $scope.$apply(function () {
             var arr = [];
             for (elementName in data.metrics) {
@@ -16,7 +16,13 @@ angular.module('iot').controller('MainController', function($scope, $rootScope, 
         });
     });
 
-    $scope.showHistory = function (sensor) {
+    $scope.showHistory = function (sensor){
+        $scope.machine = {
+            device: 'maachine-1',
+            name: 'Castor',
+            sensor: sensor
+        };
+
         $http.get('/history/' + sensor)
             .then(function res(data) {
                 chartData = data.data;

@@ -3,6 +3,7 @@ package com.redhat.iot.demo.simulator.route;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.dataformat.protobuf.ProtobufDataFormat;
 import org.eclipse.kura.core.message.protobuf.KuraPayloadProto;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
 
@@ -11,6 +12,7 @@ import org.springframework.context.annotation.ImportResource;
 public class Application extends RouteBuilder {
     ProtobufDataFormat format = new ProtobufDataFormat(KuraPayloadProto.KuraPayload.getDefaultInstance());
     KuraProcess process = new KuraProcess();
+
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);

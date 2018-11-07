@@ -18,7 +18,7 @@ public class Route extends RouteBuilder {
                 .setCommentMarker('#')
                 .setHeader(new String[]{"offset","sensor0","sensor1","sensor2","sensor3","sensor4","sensor5","sensor6"});
 
-        from("stream:file?fileName=/home/mcurwen/dev/src/projects/rhsa/java/camelroute/src/data/Simulator2.csv")
+        from("stream:file?fileName=/deployments/data/Simulator2.csv")
                 .unmarshal(csv)
                 .delay(1000)
                 .process(new Process())

@@ -1,0 +1,80 @@
+spec:
+  template:
+    spec:
+      containers:
+        - 
+          resources:
+            requests:
+              cpu: "0.2"
+#              memory: 256Mi
+            limits:
+              cpu: "1.0"
+#              memory: 256Mi
+spec:
+  template:
+    spec:
+      containers:
+        -
+          resources:
+            requests:
+              cpu: "0.2"
+#              memory: 256Mi
+            limits:
+              cpu: "1.0"
+#              memory: 256Mi
+          env:
+            - name: MQTT_HOSTNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: iotdemo-config-map
+                  key: mqtt.hostname
+            - name: MQTT_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: iotdemo-config-map
+                  key: mqtt.port
+            - name: MQTT_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: iotdemo-config-map
+                  key: mqtt.username
+            - name: MQTT_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: iotdemo-config-map
+                  key: mqtt.password
+            - name: MQTT_MACHINE_TOPIC
+              valueFrom:
+                configMapKeyRef:
+                  name: iotdemo-config-map
+                  key: mqtt.machine.topic
+            - name: MQTT_PAYLOAD_TOPIC
+              valueFrom:
+                configMapKeyRef:
+                  name: iotdemo-config-map
+                  key: mqtt.payload.topic
+            - name: MARIADB_SERVICE
+              valueFrom:
+                configMapKeyRef:
+                  name: iotdemo-config-map
+                  key: mariadb.service
+            - name: MARIADB_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: iotdemo-config-map
+                  key: mariadb.database
+            - name: MARIADB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: iotdemo-config-map
+                  key: mariadb.port
+            - name: MARIADB_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: iotdemo-config-map
+                  key: mariadb.username
+            - name: MARIADB_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: iotdemo-config-map
+                  key: mariadb.password

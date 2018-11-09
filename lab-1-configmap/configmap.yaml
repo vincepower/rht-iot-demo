@@ -1,0 +1,13 @@
+apiVersion: v1
+data:
+  mqtt.hostname: ec-broker-mqtt.MQTT-DOMAIN
+  mqtt.machine.topic: +/+/cloudera-demo/facilities/+/lines/+/machines/machine-1
+  mqtt.password: ec-password
+  mqtt.payload.topic: iot-demo/data
+  mqtt.port: 'MQTT-PORT'
+  mqtt.user.password: 'infosys123!@#'
+  mqtt.user.username: user1
+  mqtt.username: ec-sys
+kind: ConfigMap
+metadata:
+  name: iotdemo-config-map

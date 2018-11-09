@@ -1,6 +1,6 @@
 # Commands to load this application and its route
 
-Update MQTT-DOMAIN and MQTT-PORT placeholders in the configmap.yaml file before importing
+Update DOMAIN (iot-demo-371b.apps.rhpds310.openshift.opentlc.com) and MQTT-PORT (31884) in the configmap.yaml file before importing
 
  
 ### Commands

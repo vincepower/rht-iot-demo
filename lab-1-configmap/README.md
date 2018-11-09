@@ -5,8 +5,7 @@ Update MQTT-DOMAIN and MQTT-PORT placeholders in the configmap.yaml file before 
  
 ### Commands
 
-`
+```
 oc create -f configmap.yaml
-
-`
+```
  

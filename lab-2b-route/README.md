@@ -5,14 +5,19 @@ Update GITHUB-REPO to be your repo, the default would be https://github.com/vinc
  
 ### Variables
 `
-GITHUB-REPO=https://github.com/vincepower/rht-iot-demo.git  
+GITHUB-REPO=https://github.com/vincepower/rht-iot-demo.git
+
 APP-NAME=lab-2b-route  
+
 `
 
 
 ### Commands
 `
-oc new-app fabric8/s2i-java:2.1~$GITHUB-REPO --context-dir=$APP-NAME --name=$APP-NAME  
-oc expose svc/$APP-NAME  
+oc new-app fabric8/s2i-java:2.1~$GITHUB-REPO --context-dir=$APP-NAME --name=$APP-NAME
+
+oc expose svc/$APP-NAME
+
 `
  
+

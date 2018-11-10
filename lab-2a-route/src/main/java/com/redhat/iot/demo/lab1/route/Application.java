@@ -29,14 +29,8 @@ public class Application extends RouteBuilder {
 
         from("file:/deployments/data/")
                 .split(body().tokenize("\n")).streaming()
-                .unmarshal(csv)
-                .delay(1000)
-                .process(new CsvProcess())
-                .marshal().json(JsonLibrary.Jackson)
-                .setHeader(Exchange.HTTP_METHOD,constant("POST"))
-                .setHeader(Exchange.CONTENT_TYPE,constant("application/json"))
 
-                .to("http://lab-1-web/iot")
-                .log("${body}");
+
+                .to("http://lab-1-web/iot");
     }
 }

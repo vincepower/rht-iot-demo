@@ -16,15 +16,8 @@ public class KuraProcess implements Processor{
 
         KuraPayloadProto.KuraPayload payload = (KuraPayloadProto.KuraPayload) msg.getIn().getBody();
 
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        SimpleModule module = new SimpleModule();
-        module.addSerializer(new KuraPayloadSerializer(KuraPayloadProto.KuraPayload.class));
-        mapper.registerModule(module);
-        List<KuraPayloadProto.KuraPayload.KuraMetric> names = payload.getMetricList();
+        ***Student Code ****
 
-
-        String json = mapper.writeValueAsString(payload);
         msg.getIn().setBody(json);
     }
 }

@@ -61,33 +61,7 @@ angular.module('iot').factory('SensorData', function ($http, $rootScope) {
         client.onConnectionLost = onConnectionLost;
         client.onMessageArrived = onMessageArrived;
 
-        client.connect({
-            onSuccess: function () {
-                console.log("Connected to broker");
-                connected = true;
-                if (attempt > 1) {
-                    Notifications.success("Connected to the IoT cloud!");
-                }
-                var topicName = $rootScope.config.mqtt_payload_topic;//"iot-demo/data";
-                client.subscribe(topicName);
-                listeners.push({
-                    topic: topicName,
-                    objType: 'machines',
-                    objId: 'machine-1',
-                    listener: listener
-                });
-            },
-            userName: 'ec-sys',
-            password: 'ec-password',
-            onFailure: function (err) {
-                console.log("Failed to connect to broker (attempt " + attempt + "), retrying. Error code:" + err.errorCode + " message:" + err.errorMessage);
-                //$rootScope.$broadcast("activity:gateway", {type: "warning", duration: 2000});
-                // startSim();
-                $timeout(function () {
-                    connectClient(attempt + 1);
-                }, 10000);
-            }
-        });
+        *** Student Connect ****
 
     }
 

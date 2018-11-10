@@ -37,7 +37,7 @@ public class Application extends RouteBuilder {
                 .unmarshal().gzip()
                 .unmarshal(format)
                 .process(kurProcess)
-                .to("direct:db", "direct:fwd");
+                .to(****Student Code****);
 
 
         from("direct:fwd")

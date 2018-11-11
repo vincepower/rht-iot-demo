@@ -26,6 +26,7 @@ items:
     source:
       contextDir: lab-4-web
       git:
+        ref: master
         uri: 'https://github.com/vincepower/rht-iot-demo.git'
       type: Git
     strategy:

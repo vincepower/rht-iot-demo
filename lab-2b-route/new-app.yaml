@@ -1,0 +1,242 @@
+apiVersion: v1
+kind: List
+items:
+- apiVersion: image.openshift.io/v1
+  kind: ImageStream
+  metadata:
+    labels:
+      app: lab-2b-route
+    name: lab-2b-route
+- apiVersion: build.openshift.io/v1
+  kind: BuildConfig
+  metadata:
+    annotations:
+    labels:
+      app: lab-2b-route
+    name: lab-2b-route
+  spec:
+    nodeSelector: null
+    output:
+      to:
+        kind: ImageStreamTag
+        name: 'lab-2b-route:latest'
+    postCommit: {}
+    resources: {}
+    runPolicy: Serial
+    source:
+      contextDir: lab-2b-route
+      git:
+        ref: student-labs
+        uri: 'https://github.com/vincepower/rht-iot-demo.git'
+      type: Git
+    strategy:
+      sourceStrategy:
+        from:
+          kind: ImageStreamTag
+          name: 's2i-java:2.3.1'
+      type: Source
+    successfulBuildsHistoryLimit: 5
+    triggers:
+      - github:
+          secret: upWuBWwcSsKb-vIuLozx
+        type: GitHub
+      - generic:
+          secret: fRQXKObCxGXwoTtREKgB
+        type: Generic
+      - type: ConfigChange
+      - type: ImageChange
+
+- apiVersion: route.openshift.io/v1
+  kind: Route
+  metadata:
+    annotations:
+    labels:
+      app: lab-2b-route
+    name: lab-2b-route
+  spec:
+    port:
+      targetPort: 8778-tcp
+    to:
+      kind: Service
+      name: lab-2b-route
+      weight: 100
+    wildcardPolicy: None
+  
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+    labels:
+      app: lab-2b-route
+    name: lab-2b-route
+  spec:
+    ports:
+      - name: 8778-tcp
+        port: 8778
+        protocol: TCP
+        targetPort: 8778
+      - name: 9779-tcp
+        port: 9779
+        protocol: TCP
+        targetPort: 9779
+    selector:
+      app: lab-2b-route
+      deploymentconfig: lab-2b-route
+    sessionAffinity: None
+    type: ClusterIP
+  
+- apiVersion: apps.openshift.io/v1
+  kind: DeploymentConfig
+  metadata:
+    labels:
+      app: lab-2b-route
+    name: lab-2b-route
+  spec:
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      app: lab-2b-route
+      deploymentconfig: lab-2b-route
+    strategy:
+      activeDeadlineSeconds: 21600
+      resources: {}
+      rollingParams:
+        intervalSeconds: 1
+        maxSurge: 25%
+        maxUnavailable: 25%
+        timeoutSeconds: 600
+        updatePeriodSeconds: 1
+      type: Rolling
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: lab-2b-route
+          deploymentconfig: lab-2b-route
+      spec:
+        containers:
+          - env:
+            - name: ESF_HOSTNAME
+              valueFrom:
+                configMapKeyRef:
+                  key: esf.hostname
+                  name: iotdemo-config-map
+            - name: ESF_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  key: esf.password
+                  name: iotdemo-config-map
+            - name: ESF_PORT
+              valueFrom:
+                configMapKeyRef:
+                  key: esf.port
+                  name: iotdemo-config-map
+            - name: ESF_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  key: esf.username
+                  name: iotdemo-config-map
+            - name: MARIADB_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  key: mariadb.database
+                  name: iotdemo-config-map
+            - name: MARIADB_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  key: mariadb.password
+                  name: iotdemo-config-map
+            - name: MARIADB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  key: mariadb.port
+                  name: iotdemo-config-map
+            - name: MARIADB_SERVICE
+              valueFrom:
+                configMapKeyRef:
+                  key: mariadb.service
+                  name: iotdemo-config-map
+            - name: MARIADB_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  key: mariadb.username
+                  name: iotdemo-config-map
+            - name: MQTT_HOSTNAME
+              valueFrom:
+                configMapKeyRef:
+                  key: mqtt.hostname
+                  name: iotdemo-config-map
+            - name: MQTT_MACHINE_TOPIC
+              valueFrom:
+                configMapKeyRef:
+                  key: mqtt.machine.topic
+                  name: iotdemo-config-map
+            - name: MQTT_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  key: mqtt.password
+                  name: iotdemo-config-map
+            - name: MQTT_PAYLOAD_TOPIC
+              valueFrom:
+                configMapKeyRef:
+                  key: mqtt.payload.topic
+                  name: iotdemo-config-map
+            - name: MQTT_PORT
+              valueFrom:
+                configMapKeyRef:
+                  key: mqtt.port
+                  name: iotdemo-config-map
+            - name: MQTT_USER_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  key: mqtt.user.password
+                  name: iotdemo-config-map
+            - name: MQTT_USER_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  key: mqtt.user.username
+                  name: iotdemo-config-map
+            - name: MQTT_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  key: mqtt.username
+                  name: iotdemo-config-map
+            - name: MQTT_WEBSOCKET
+              valueFrom:
+                configMapKeyRef:
+                  key: mqtt.websocket
+                  name: iotdemo-config-map
+            - name: MQTT_WEBSOCKET_PORT
+              valueFrom:
+                configMapKeyRef:
+                  key: mqtt.websocket.port
+                  name: iotdemo-config-map
+            image:
+            imagePullPolicy: Always
+            name: lab-2b-route
+            ports:
+              - containerPort: 8778
+                protocol: TCP
+              - containerPort: 9779
+                protocol: TCP
+            resources: {}
+            terminationMessagePath: /dev/termination-log
+            terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+    test: false
+    triggers:
+      - type: ConfigChange
+      - imageChangeParams:
+          automatic: true
+          containerNames:
+            - lab-2b-route
+          from:
+            kind: ImageStreamTag
+            name: 'lab-2b-route:latest'
+        type: ImageChange
+

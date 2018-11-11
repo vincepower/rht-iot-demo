@@ -1,17 +1,9 @@
 # Commands to load this application and its route
 
-Update GITHUB-REPO to be your repo, the default would be https://github.com/vincepower/rht-iot-demo.git 
-
- 
-### Variables
-```
-GITHUBREPO=https://github.com/vincepower/rht-iot-demo.git
-APPNAME=lab-2a-web
-```
+Update the Git Repo (default https://github.com/vincepower/rht-iot-demo.git) and branch (default master) as required.
 
 ### Commands
 ```
-oc new-app fabric8/s2i-java:2.1~$GITHUBREPO --context-dir=$APPNAME --name=$APPNAME
-oc expose svc/$APPNAME
+oc create -f new-app.yaml
 ```
-
+ 

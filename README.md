@@ -18,7 +18,7 @@ lab-4-web - the UI now can search the database for historic events and still pul
 ```
 
 # Branches
-
+```
 student-labs - code needs to be changed to work
 master - working solutions
-
+```

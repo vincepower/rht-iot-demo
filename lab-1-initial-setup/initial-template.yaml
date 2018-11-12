@@ -1,29 +1,29 @@
 apiVersion: v1
-kind: List
-items:
+kind: Template
+objects:
 - apiVersion: v1
   kind: ConfigMap
   metadata:
     name: iotdemo-config-map
   data:
-    esf.hostname: 'http://ec-api-ROUTE-DOMAIN'
+    esf.hostname: http://ec-api.${PROJECTID}.svc
     esf.password: 'Infosys123!@#'
     esf.port: '80'
-    esf.username: user16
-    mariadb.database: sampledb
-    mariadb.password: RirqCJ2bnpwQLQUI
+    esf.username: ${USERID}
+    mariadb.database: ecdb
+    mariadb.password: RedHat123
     mariadb.port: '3306'
     mariadb.service: mariadb
-    mariadb.username: userCQ3
-    mqtt.hostname: ec-broker-mqtt-ROUTE-DOMAIN
+    mariadb.username: redhat
+    mqtt.hostname: ec-broker-mqtt.${PROJECTID}.svc
     mqtt.machine.topic: +/+/cloudera-demo/facilities/+/lines/+/machines/machine-1
     mqtt.password: ec-password
     mqtt.payload.topic: iot-demo/data
-    mqtt.port: '31899'
+    mqtt.port: ${MQTTPORT}
     mqtt.user.password: 'Infosys123!@#'
-    mqtt.user.username: user16
+    mqtt.user.username: ${USERID}
     mqtt.username: ec-sys
-    mqtt.websocket: ec-broker-ws-ROUTE-DOMAIN
+    mqtt.websocket: ec-broker-ws.${PROJECTID}.svc
     mqtt.websocket.port: '80'
 - kind: ImageStream
   apiVersion: "v1"
@@ -39,3 +39,16 @@ items:
         name: '2.3.1'
         referencePolicy:
           type: Source
+parameters:
+- description: The user name you are using for this workshop.
+  displayName: User ID
+  name: USERID
+  required: true
+- description: The default project name for your user.
+  displayName: Project ID
+  name: PROJECTID
+  required: true
+- description: The MQTT Port specific to your user.
+  displayName: MQTT Port
+  name: MQTTPORT
+  required: true

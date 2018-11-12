@@ -6,4 +6,4 @@ Update the Git Repo (default https://github.com/vincepower/rht-iot-demo.git) and
 ```
 oc create -f new-app.yaml
 ```
- 
+

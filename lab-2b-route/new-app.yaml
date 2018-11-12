@@ -46,22 +46,6 @@ items:
       - type: ConfigChange
       - type: ImageChange
 
-- apiVersion: route.openshift.io/v1
-  kind: Route
-  metadata:
-    annotations:
-    labels:
-      app: lab-2b-route
-    name: lab-2b-route
-  spec:
-    port:
-      targetPort: 8778-tcp
-    to:
-      kind: Service
-      name: lab-2b-route
-      weight: 100
-    wildcardPolicy: None
-  
 - apiVersion: v1
   kind: Service
   metadata:
@@ -72,20 +56,31 @@ items:
     name: lab-2b-route
   spec:
     ports:
-      - name: 8778-tcp
-        port: 8778
+      - name: 8081-tcp
+        port: 8081
         protocol: TCP
-        targetPort: 8778
-      - name: 9779-tcp
-        port: 9779
-        protocol: TCP
-        targetPort: 9779
+        targetPort: 8081
     selector:
-      app: lab-2b-route
       deploymentconfig: lab-2b-route
     sessionAffinity: None
     type: ClusterIP
-  
+
+- apiVersion: route.openshift.io/v1
+  kind: Route
+  metadata:
+    annotations:
+    labels:
+      app: lab-2b-route
+    name: lab-2b-route
+  spec:
+    port:
+      targetPort: 8081-tcp
+    to:
+      kind: Service
+      name: lab-2b-route
+      weight: 100
+    wildcardPolicy: None
+
 - apiVersion: apps.openshift.io/v1
   kind: DeploymentConfig
   metadata:
@@ -216,9 +211,7 @@ items:
             imagePullPolicy: Always
             name: lab-2b-route
             ports:
-              - containerPort: 8778
-                protocol: TCP
-              - containerPort: 9779
+              - containerPort: 8081
                 protocol: TCP
             resources: {}
             terminationMessagePath: /dev/termination-log

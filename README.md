@@ -16,3 +16,9 @@ lab-2b-route - the camel route gets a little more advanced and pulls data from t
 lab-3-route - loads data into a database and the UI
 lab-4-web - the UI now can search the database for historic events and still pull live events
 ```
+
+# Branches
+
+student-labs - code needs to be changed to work
+master - working solutions
+

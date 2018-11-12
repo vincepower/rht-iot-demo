@@ -43,7 +43,7 @@ Process the initial-template.yaml file with the variables you have discovered
 Loading the initial ConfigMap and common s2i ImageStream
 ```
 oc process -f initial-template.yaml \
-    -p MQTTPORT=31884 \
+    -p MQTTPORT=1883 \
     -p PROJECTID=iot-demo-ademo-cc3e-user3 \
     -p USERID=user3 \
     > initial-setup.yaml

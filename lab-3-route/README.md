@@ -9,14 +9,23 @@ This will use the branch you specific in the new-app.yaml file, not what the loc
 Edit the script and update the Git Repo (default https://github.com/vincepower/rht-iot-demo.git) and branch (default master) as required.
 
 ### Commands
-``` oc create -f new-app.yaml ```
+```
+oc create -f new-app.yaml
+```
 
 ## Option 2: Use maven and fabric8
 
 This will use whatever branch you're current local environment is set to.
 
 ### Commands
-``` mvn fabric8:deploy ```
-or if you want logs directly in the console you are running the command:
-``` mvn fabric8:run ```
+
+This will build and deploy
+```
+mvn fabric8:deploy
+```
+
+Or if you want to watch the deployed pod from the terminal session you are in
+```
+mvn fabric8:run
+```
 

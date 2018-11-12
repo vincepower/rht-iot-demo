@@ -20,7 +20,6 @@ Login successful.
 You have one project on this server: "iot-demo-ademo-cc3e-user3"
 
 Using project "iot-demo-ademo-cc3e-user3".
-
 ```
 
 ## Step 2

@@ -6,7 +6,7 @@ objects:
   metadata:
     name: iotdemo-config-map
   data:
-    esf.hostname: http://ec-api.${PROJECTID}.svc
+    esf.hostname: 'http://ec-api-${PROJECTID}.apps.infosys-3e7e.openshiftworkshop.com'
     esf.password: 'Infosys123!@#'
     esf.port: '80'
     esf.username: ${USERID}
@@ -23,7 +23,7 @@ objects:
     mqtt.user.password: 'Infosys123!@#'
     mqtt.user.username: ${USERID}
     mqtt.username: ec-sys
-    mqtt.websocket: ec-broker-ws.${PROJECTID}.svc
+    mqtt.websocket: ec-broker-ws-${PROJECTID}.apps.infosys-3e7e.openshiftworkshop.com
     mqtt.websocket.port: '80'
 - kind: ImageStream
   apiVersion: "v1"

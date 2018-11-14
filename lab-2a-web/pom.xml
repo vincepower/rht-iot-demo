@@ -2,11 +2,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.rehat.iot</groupId>
-	<artifactId>lab-1-web</artifactId>
+	<artifactId>lab-2a-web</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>lab-1-web</name>
+	<name>lab-2a-web</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>

@@ -27,7 +27,7 @@ public class Application extends RouteBuilder {
                         .setCommentMarker('#')
                         .setHeader(new String[]{"offset","sensor0","sensor1","sensor2","sensor3","sensor4","sensor5","sensor6"});
 
-        from("file:/deployments/data/")
+        from("file:/tmp/lab2/")
                 .split(body().tokenize("\n")).streaming()
                 .unmarshal(csv)
                 .delay(1000)
@@ -36,7 +36,7 @@ public class Application extends RouteBuilder {
                 .setHeader(Exchange.HTTP_METHOD,constant("POST"))
                 .setHeader(Exchange.CONTENT_TYPE,constant("application/json"))
 
-                .to("http://lab-1-web/iot")
+                .to("http://lab-2a-web:8080/iot")
                 .log("${body}");
     }
 }

@@ -26,7 +26,7 @@ public class DataSourceConfig {
 */
         String url = "jdbc:mysql://"+MARIADB_SERVICE+":" + MARIADB_PORT +"/" + MARIADB_DATABASE ;
         BasicDataSource ds = new BasicDataSource();
-        ds.setDriverClassName("com.mysql.jdbc.Driver");
+        ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
         ds.setUsername(MARIADB_USERNAME);
         ds.setPassword(MARIADB_PASSWORD);
         ds.setUrl(url);

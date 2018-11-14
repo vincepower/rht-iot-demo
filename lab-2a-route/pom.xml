@@ -2,7 +2,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.redhat.iot</groupId>
-    <artifactId>lab-1-route</artifactId>
+    <artifactId>lab-2a-route</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>

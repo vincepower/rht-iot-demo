@@ -27,10 +27,10 @@ public class Application extends RouteBuilder {
                         .setCommentMarker('#')
                         .setHeader(new String[]{"offset","sensor0","sensor1","sensor2","sensor3","sensor4","sensor5","sensor6"});
 
-        from("file:/deployments/data/")
+        from("file:/tmp/lab2a/")
                 .split(body().tokenize("\n")).streaming()
 
 
-                .to("http://lab-1-web/iot");
+                .to("http://lab-2a-web:8080/iot");
     }
 }

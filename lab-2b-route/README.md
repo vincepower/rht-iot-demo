@@ -1,6 +1,6 @@
 # Commands to load this application and its route
 
-Have a local clone of the git repo to work with makes these commands work better. Both require an local OpenShift client that is logged in as done in lab-1.
+Have a local clone of the git repo to work with makes these commands work better. Both require an local OpenShift client that is logged in as done in exercise 1.
 
 This will use the branch you specific in the new-app.yaml file, not what the local repo is set to.
 

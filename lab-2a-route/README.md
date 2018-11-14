@@ -29,3 +29,12 @@ Or if you want to watch the deployed pod from the terminal session you are in
 mvn fabric8:run
 ```
 
+## To actually load the data once lab-2a-route and lab-2a-web are running
+Use the pod name from the output of ``` oc get pods | grep lab-2a-route | grep Running ``` to run the following:
+
+```
+oc cp Simulator2.csv lab-2a-route-2-gft7x:/tmp/lab2a
+```
+
+Then it should load data successfully.
+

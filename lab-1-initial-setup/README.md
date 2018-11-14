@@ -7,19 +7,19 @@ To process the ConfigMap that is required for this lab there are a couple steps.
 You will need your assigned User ID (password is openshift) and to make note of the project ID you are assigned.
 
 ```
-$ oc login https://master.ademo-cc3e.openshiftworkshop.com
+$ oc login https://master.infosys-3e7e.openshiftworkshop.com
 The server uses a certificate signed by an unknown authority.
 You can bypass the certificate check, but any data you send to the server could be intercepted by others.
 Use insecure connections? (y/n): y
 
-Authentication required for https://master.ademo-cc3e.openshiftworkshop.com:443 (openshift)
+Authentication required for https://master.infosys-3e7e.openshiftworkshop.com:443 (openshift)
 Username: user3
 Password:
 Login successful.
 
-You have one project on this server: "iot-demo-ademo-cc3e-user3"
+You have one project on this server: "iot-demo-infosys-3e7e-user3"
 
-Using project "iot-demo-ademo-cc3e-user3".
+Using project "iot-demo-infosys-3e7e-user3".
 ```
 
 ## Step 2
@@ -43,7 +43,7 @@ Loading the initial ConfigMap and common s2i ImageStream
 ```
 oc process -f initial-template.yaml \
     -p MQTTPORT=1883 \
-    -p PROJECTID=iot-demo-ademo-cc3e-user3 \
+    -p PROJECTID=iot-demo-infosys-3e7e-user3 \
     -p USERID=user3 \
     > initial-setup.yaml
 ```
